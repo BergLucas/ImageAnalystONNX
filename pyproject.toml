@@ -16,7 +16,7 @@ packages = [{ include = "image_analyst", from = "src" }]
 [tool.poetry.dependencies]
 python = "^3.9"
 numpy = "^1.24.3"
-image-analyst = "^0.1.0"
+image-analyst = "^0.1.1"
 onnxruntime = "^1.15.1"
 
 [tool.poetry.group.dev.dependencies]
