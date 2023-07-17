@@ -66,12 +66,12 @@ class YoloV7Onnx(ODModel):
         """
         try:
             model_path = download_file(
-                "https://github.com/BergLucas/ImageAnalystONNX/releases/download/v0.1.0/onnx-yolov7-coco.onnx",  # noqa: E501
+                "https://github.com/BergLucas/ImageAnalystONNX/releases/download/v0.1.1/onnx-yolov7-coco.onnx",  # noqa: E501
                 "onnx-yolov7-coco.onnx",
                 report_callback,
             )
             labels_path = download_file(
-                "https://github.com/BergLucas/ImageAnalystONNX/releases/download/v0.1.0/onnx-yolov7-coco.names",  # noqa: E501
+                "https://github.com/BergLucas/ImageAnalystONNX/releases/download/v0.1.1/onnx-yolov7-coco.names",  # noqa: E501
                 "onnx-yolov7-coco.names",
                 report_callback,
             )
@@ -127,12 +127,12 @@ class YoloV7Onnx(ODModel):
         """
         try:
             model_path = download_file(
-                "https://github.com/BergLucas/ImageAnalystONNX/releases/download/v0.1.0/onnx-yolov7-tiny-coco.onnx",  # noqa: E501
+                "https://github.com/BergLucas/ImageAnalystONNX/releases/download/v0.1.1/onnx-yolov7-tiny-coco.onnx",  # noqa: E501
                 "onnx-yolov7-tiny-coco.onnx",
                 report_callback,
             )
             labels_path = download_file(
-                "https://github.com/BergLucas/ImageAnalystONNX/releases/download/v0.1.0/onnx-yolov7-tiny-coco.names",  # noqa: E501
+                "https://github.com/BergLucas/ImageAnalystONNX/releases/download/v0.1.1/onnx-yolov7-tiny-coco.names",  # noqa: E501
                 "onnx-yolov7-tiny-coco.names",
                 report_callback,
             )

@@ -218,17 +218,23 @@ pyreadline3 = {version = "*", markers = "sys_platform == \"win32\" and python_ve
 
 [[package]]
 name = "image-analyst"
-version = "0.1.1"
+version = "0.1.2"
 description = "ImageAnalyst is a library that simplifies image analysis."
 optional = false
 python-versions = ">=3.9,<4.0"
 files = [
-    {file = "image_analyst-0.1.1-py3-none-any.whl", hash = "sha256:85d0535914afddf8558a4c6c9c862a545ae270def6d97861fbdd73e6d92642c0"},
-    {file = "image_analyst-0.1.1.tar.gz", hash = "sha256:3c1e4a7bad6f2b0d774587f6139aa42f5434c4c5f2d287763e5ca00dcff5d492"},
+    {file = "image_analyst-0.1.2-py3-none-any.whl", hash = "sha256:6ed6ff443d8cd41763badb24a3760fb35e3e7ca14ae5ff4ccb9fae1d60556ca2"},
+    {file = "image_analyst-0.1.2.tar.gz", hash = "sha256:be1ed1cdab76a7e01a1e9c43c3e286e0bc6d97dacbef6214498d50d95b008ea4"},
 ]
 
 [package.dependencies]
 numpy = ">=1.24.3,<2.0.0"
+
+[package.extras]
+cv2 = ["image-analyst-cv2[cv2] (>=0.1.0,<0.2.0)"]
+hf = ["image-analyst-hf (>=0.1.0,<0.2.0)"]
+onnx = ["image-analyst-onnx (>=0.1.0,<0.2.0)"]
+tf = ["image-analyst-tf (>=0.1.1,<0.2.0)"]
 
 [[package]]
 name = "mccabe"
@@ -414,13 +420,13 @@ files = [
 
 [[package]]
 name = "platformdirs"
-version = "3.8.1"
+version = "3.9.1"
 description = "A small Python package for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "platformdirs-3.8.1-py3-none-any.whl", hash = "sha256:cec7b889196b9144d088e4c57d9ceef7374f6c39694ad1577a0aab50d27ea28c"},
-    {file = "platformdirs-3.8.1.tar.gz", hash = "sha256:f87ca4fcff7d2b0f81c6a748a77973d7af0f4d526f98f308477c3c436c74d528"},
+    {file = "platformdirs-3.9.1-py3-none-any.whl", hash = "sha256:ad8291ae0ae5072f66c16945166cb11c63394c7a3ad1b1bc9828ca3162da8c2f"},
+    {file = "platformdirs-3.9.1.tar.gz", hash = "sha256:1b42b450ad933e981d56e59f1b97495428c9bd60698baab9f3eb3d00d5822421"},
 ]
 
 [package.extras]
@@ -549,4 +555,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "d4e2e82856a135ec0417494656187179de140b07cfac4538d9c5c65c1bbb8c14"
+content-hash = "8ecee4acec4be80ea0501950053743262d73afd0012b39626ddb2119f701b395"
