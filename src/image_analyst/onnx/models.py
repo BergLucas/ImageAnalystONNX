@@ -1,24 +1,25 @@
 from __future__ import annotations
-from image_analyst.exceptions import DownloadFailedException
-from image_analyst.utils import download_file, ReportFunction
+
+import logging
+from typing import Literal, Optional
+
+import numpy as np
+import onnxruntime as ort
+
 from image_analyst.exceptions import (
-    ModelLoadingFailedException,
-    InvalidDtypeException,
     DetectionFailedException,
+    DownloadFailedException,
+    InvalidDtypeException,
+    ModelLoadingFailedException,
 )
 from image_analyst.image import (
-    ImageFormat,
     BoundingBox,
-    ImageEmbedder,
     EmbeddingFunction,
+    ImageEmbedder,
+    ImageFormat,
 )
-from image_analyst.utils import NmsFunction, NmsPython
-from image_analyst.models import ODModel, Detection
-from typing import Optional, Literal
-import onnxruntime as ort
-import numpy as np
-import logging
-
+from image_analyst.models import Detection, ODModel
+from image_analyst.utils import NmsFunction, NmsPython, ReportFunction, download_file
 
 logger = logging.getLogger(__name__)
 
@@ -111,7 +112,7 @@ class YoloV7Onnx(ODModel):
                 Defaults to 0.25.
             providers (Optional[list[Provider]], optional): the providers to use.
                 Defaults to None.
-            nm_function (Optional[NmsFunction], optional): the nms function to use.
+            nms_function (Optional[NmsFunction], optional): the nms function to use.
                 Defaults to NmsPython.
             embedding_function (Optional[EmbeddingFunction], optional): the embedding
                 function to use. Defaults to an ImageEmbedder.
@@ -188,13 +189,17 @@ class YoloV7Onnx(ODModel):
         try:
             with open(labels_path, "rt") as f:
                 self.__supported_classes = tuple(f.read().splitlines())
-        except OSError:
-            raise ModelLoadingFailedException("Cannot load the supported classes.")
+        except OSError as error:
+            raise ModelLoadingFailedException(
+                "Cannot load the supported classes."
+            ) from error
 
         try:
             self.__session = ort.InferenceSession(model_path, providers=providers)
-        except ValueError:
-            raise ModelLoadingFailedException("Cannot load the YoloV3 model.")
+        except ValueError as error:
+            raise ModelLoadingFailedException(
+                "Cannot load the YoloV3 model."
+            ) from error
 
         self.__score_threshold = score_threshold
         self.__input_names = [i.name for i in self.__session.get_inputs()]
